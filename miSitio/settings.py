@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-xxb3mj655sdssq*ensv@t+tmra+b+j=$z31(2dc(y4in#+ykya
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['airsoft-django.onrender.com']
 
 
 # Application definition
