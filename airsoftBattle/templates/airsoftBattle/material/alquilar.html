@@ -1,0 +1,99 @@
+{% extends "airsoftBattle/base.html" %} {% block content %}
+
+<h1>Alquilar</h1>
+
+<form action="" method="POST">
+	{% csrf_token %}
+	<div class="m-5">
+		<h2>Réplicas</h2>
+		{% for replica in replicas %}
+		<div class="accordion p-2" id="replica{{ replica.pk }}">
+			<div class="accordion-item">
+				<h2 class="accordion-header">
+					<button
+						class="accordion-button collapsed"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#replicaCollapse{{ replica.pk }}"
+						aria-expanded="false"
+						aria-controls="replicaCollapse{{ replica.pk }}">
+						{{ replica }}
+					</button>
+				</h2>
+				<div
+					id="replicaCollapse{{ replica.pk }}"
+					class="accordion-collapse collapse">
+					<div class="accordion-body">
+						<div class="row">
+							<div class="col-4">
+								<img
+									src="{{ replica.fotoMaterial.url }}"
+									alt="fotoReplica"
+									width="300vh" />
+							</div>
+							<div class="col-7 text-end mt-5">
+								{% if replica.estado == 'disponible' %}
+								<label for="replica">Alquilar</label>
+								<input
+									type="radio"
+									name="replica"
+									id="{{ replica.pk }}"
+									value="{{ replica.pk }}" />
+								{% else %} No disponible {% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+	<div class="m-5">
+		<h2>Protecciones</h2>
+		{% for proteccion in protecciones %}
+		<div class="accordion p-2" id="proteccion{{ proteccion.pk }}">
+			<div class="accordion-item">
+				<h2 class="accordion-header">
+					<button
+						class="accordion-button collapsed"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#proteccionCollapse{{ proteccion.pk }}"
+						aria-expanded="false"
+						aria-controls="proteccionCollapse{{ proteccion.pk }}">
+						{{ proteccion }}
+					</button>
+				</h2>
+				<div
+					id="proteccionCollapse{{ proteccion.pk }}"
+					class="accordion-collapse collapse">
+					<div class="accordion-body">
+						<div class="row">
+							<div class="col-4">
+								<img
+									src="{{ proteccion.fotoMaterial.url }}"
+									alt="foto proteccion"
+									width="200vh" />
+							</div>
+							<div class="col-7 text-end mt-5">
+								{% if proteccion.estado == 'disponible' %}
+								<label for="proteccion">Alquilar</label>
+								<input
+									type="radio"
+									name="proteccion"
+									id="{{ proteccion.pk }}"
+									value="{{ proteccion.pk }}" />
+								{% else %} No disponible {% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	<button type="submit" class="btn btnCustom mt-3">Confirmar alquiler</button>
+</form>
+
+{% endblock %}

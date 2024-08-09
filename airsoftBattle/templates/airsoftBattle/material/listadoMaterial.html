@@ -1,0 +1,82 @@
+{% extends "airsoftBattle/base.html" %} {% block content %}
+<h1>Listado de materiales para alquilar</h1>
+
+<div class="m-5">
+	<h2>Réplicas</h2>
+	{% for replica in replicas %}
+	<div class="accordion p-2">
+		<div class="accordion-item">
+			<h2 class="accordion-header">
+				<button
+					class="accordion-button collapsed"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#replicaCollapse{{ replica.id }}"
+					aria-expanded="false"
+					aria-controls="replicaCollapse{{ replica.id }}">
+					{{ replica }}
+				</button>
+			</h2>
+			<div
+				id="replicaCollapse{{ replica.id }}"
+				class="accordion-collapse collapse">
+				<div class="accordion-body">
+					<div class="row">
+						<div class="col-4">
+							<img
+								src="{{ replica.fotoMaterial.url }}"
+								alt="fotoReplica"
+								width="300vh" />
+						</div>
+						<div class="col-7 text-end mt-5">
+							{% if replica.estado == 'disponible' %} Disponible {% else %} No
+							disponible {% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+
+<div class="m-5">
+	<h2>Protecciones</h2>
+	{% for proteccion in protecciones %}
+	<div class="accordion p-2">
+		<div class="accordion-item">
+			<h2 class="accordion-header">
+				<button
+					class="accordion-button collapsed"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#proteccionCollapse{{ proteccion.id }}"
+					aria-expanded="false"
+					aria-controls="proteccionCollapse{{ proteccion.id }}">
+					{{ proteccion }}
+				</button>
+			</h2>
+			<div
+				id="proteccionCollapse{{ proteccion.id }}"
+				class="accordion-collapse collapse">
+				<div class="accordion-body">
+					<div class="row">
+						<div class="col-4">
+							<img
+								src="{{ proteccion.fotoMaterial.url }}"
+								alt="foto proteccion"
+								width="200vh" />
+						</div>
+						<div class="col-7 text-end mt-5">
+							{% if proteccion.estado == 'disponible' %} Disponible {% else %}
+							No disponible {% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+
+{% endblock %}

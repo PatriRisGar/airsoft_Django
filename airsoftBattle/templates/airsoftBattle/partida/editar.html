@@ -1,0 +1,11 @@
+{% extends "airsoftBattle/base.html" %} {% block content %}
+<h1>Editar la partida</h1>
+<div>
+	<form action="{% url 'editarPartida' pk=partida.pk %}" method="post" enctype="multipart/form-data" class="form-control">
+		{% csrf_token %} {{ form.as_p }}
+		<button type="submit" class="btn btnCustom">Confirmar cambios</button>
+		<a href="{% url 'eliminarPartida' pk=partida.pk %}" class="btn">Eliminar</a>
+		<a href="{% url 'listadoPartidas' %}" class="btn">Volver</a>
+	</form>
+</div>
+{% endblock %}

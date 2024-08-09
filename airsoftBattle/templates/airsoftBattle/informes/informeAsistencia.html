@@ -1,0 +1,39 @@
+{% extends "airsoftBattle/base.html" %} {% block content %}
+<h1 class="mt-5">Informe de Asistencia</h1>
+
+<h2 class="mt-5">Personas que más han asistido</h2>
+<table class="table table-striped mt-3 ">
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Total Asistencias</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for usuario in mayorAsistencias %}
+		<tr>
+			<td>{{ usuario.username }}</td>
+			<td>{{ usuario.totalAsistencias }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<h2 class="mt-5">Personas que menos han asistido</h2>
+<table class="table table-striped mt-3">
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Total Asistencias</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for usuario in menosAsistencias %}
+		<tr>
+			<td>{{ usuario.username }}</td>
+			<td>{{ usuario.totalAsistencias }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

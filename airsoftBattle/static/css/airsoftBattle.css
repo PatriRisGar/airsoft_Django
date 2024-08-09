@@ -1,0 +1,66 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Black Ops One', system-ui;
+}
+
+* {
+	font-family: 'Quantico', sans-serif;
+}
+
+nav {
+	background-color: #5f6f52;
+}
+
+.navUsuario {
+	margin-top: 0.25vh;
+	color: #fefae0bb !important;
+}
+
+.customCarrousel img {
+	object-fit: cover;
+	width: 100%;
+	height: 94vh;
+}
+
+.btnCustom {
+	background-color: #b99470 !important;
+	margin: 0.25em;
+	font-weight: bolder !important;
+}
+
+a {
+	color: #fefae0 !important;
+	font-size: 1em !important;
+}
+
+body {
+	background-color: #a9b388 !important;
+	font-size: 1.25em !important;
+}
+
+.cardCustom {
+	background-color: #fefae0 !important;
+}
+
+select {
+	/* Establece el ancho del elemento */
+	width: 100%;
+	/* Establece la altura del elemento */
+	height: 40px;
+	/* Añade un borde */
+	border: 1px solid #ccc;
+	/* Añade relleno interno */
+	padding: 5px;
+	/* Añade margen inferior para separación */
+	margin-bottom: 10px;
+	/* Añade un estilo de cursor */
+	cursor: pointer;
+	/* Establece el estilo del cursor cuando se está pasando por encima */
+	:hover {
+		background-color: #f0f0f0;
+	}
+}

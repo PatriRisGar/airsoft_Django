@@ -1,0 +1,43 @@
+{% extends "airsoftBattle/base.html" %} {% block content %}
+<h1>Partida día {{partida}}</h1>
+
+<p>Hora inicio: {{partida.horaInicio}}</p>
+<p>Hora finalización: {{partida.horaFin}}</p>
+<h4>Equipos</h4>
+<h5 class="pt-3">Jugadores bando militar</h5>
+{% if partida.rolMilitar.all %}
+<ul>
+	{% for usuario in partida.rolMilitar.all %}
+	<li>{{ usuario.username }}</li>
+	{% endfor %}
+</ul>
+{% else %}
+<p>no hay jugadores</p>
+{% endif %}
+<h5 class="pt-3">Jugadores bando PMC</h5>
+{% if partida.rolPMC.all %}
+<ul>
+	{% for usuario in partida.rolPMC.all %}
+	<li>{{ usuario.username }}</li>
+	{% endfor %}
+</ul>
+{% else %}
+<p>no hay jugadores</p>
+{% endif %}
+
+<div class="pt-5">
+	{% if messages %}
+	<ul class="messages p-3">
+		{% for message in messages %}
+		<li>{{ message }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %} {% if user.is_staff %}
+	<a href="{% url 'editarPartida' pk=partida.pk %}" class="btn"> Editar</a>
+	{% if partida.estado != 'cerrada' %}
+	<a href="{% url 'reorganizarEquipos' pk=partida.pk %}" class="btn"> Reorganizar equipos</a>
+	{% endif %} {% endif %} {% if partida.estado != 'cerrada' %}
+	<a href="{% url 'participarEnPartida' pk=partida.pk %}" class="btn btnCustom"> Apuntarse</a>
+	{% endif %}
+</div>
+{% endblock %}

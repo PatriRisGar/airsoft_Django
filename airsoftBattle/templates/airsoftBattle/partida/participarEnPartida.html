@@ -1,0 +1,34 @@
+{% extends "airsoftBattle/base.html" %} {% block content %}
+<h1>Participar en partida {{ partida }}</h1>
+
+<form action="" method="post">
+	{% csrf_token %}
+	<div>
+		<p>Hora de inicio: {{ partida.horaInicio }}</p>
+		<p>Hora de finalización: {{ partida.horaFin }}</p>
+		<div class="p-2">
+			<label for="rolMilitar">Bando Militar:</label>
+			<input type="radio" id="rolMilitar" name="rol" value="rolMilitar" />
+			<br /><br />
+			<label for="rolPMC">Bando PMC:</label>
+			<input type="radio" id="rolPMC" name="rol" value="rolPMC" />
+		</div>
+		<div class="p-2">
+			<label for="alquilarMaterial">Alquilar material</label>
+			<input type="checkbox" name="alquilarMaterial" id="alquilarMaterial" />
+		</div>
+	</div>
+	{% if messages %}
+	<ul class="messages p-3">
+		{% for message in messages %}
+		<li>{{ message }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+	<button type="submit" class="btn btn-primary mt-3">Confirmar</button>
+	<a href="{% url 'detallePartida' pk=partida.pk %}" class="btn mt-3">
+		Cancelar</a
+	>
+</form>
+
+{% endblock %}

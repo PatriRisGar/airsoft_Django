@@ -1,0 +1,10 @@
+{% extends "airsoftBattle/base.html" %} {% block content %}
+
+<form action="" method="post">
+	{% csrf_token %}
+	<h3>Eliminar partida del dia {{partida}}</h3>
+	<p>¿Desea eliminar esta partida?</p>
+	<button type="submit" class="btn btnCustom">Aceptar</button>
+	<a href="{% url 'editarPartida' pk=partida.pk%}" class="btn">Volver</a>
+</form>
+{% endblock %}
